@@ -1,30 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './BiddingForm.css';
 
 const BiddingForm = () => {
-    const [bids, setBids] = useState([
-        { item: 'Art Piece 1', currentBid: '$200', highestBidder: 'User A' },
-        { item: 'Art Piece 2', currentBid: '$150', highestBidder: 'User B' },
-        // Add more items as needed
-    ]);
-
+    const [bids, setBids] = useState([]);
     const [bidItem, setBidItem] = useState('');
     const [bidAmount, setBidAmount] = useState('');
     const [bidHistory, setBidHistory] = useState([]);
+    const [artworks, setArtworks] = useState([]);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        // Fetch artworks and users from the API or server
+        // Example:
+        // fetch('/api/artworks').then(res => res.json()).then(data => setArtworks(data));
+        // fetch('/api/users').then(res => res.json()).then(data => setUsers(data));
+
+        // Mock data
+        setArtworks([
+            { id: 1, title: 'Art Piece 1' },
+            { id: 2, title: 'Art Piece 2' },
+            // Add more items as needed
+        ]);
+        setUsers([
+            { id: 1, name: 'User A' },
+            { id: 2, name: 'User B' },
+            // Add more users as needed
+        ]);
+    }, []);
 
     const handleBidSubmit = (e) => {
         e.preventDefault();
         if (bidItem && bidAmount) {
-            // Update the bids
-            const updatedBids = bids.map(bid => 
+            const updatedBids = bids.map(bid =>
                 bid.item === bidItem ? { ...bid, currentBid: bidAmount, highestBidder: 'Current User' } : bid
             );
             setBids(updatedBids);
 
-            // Add to bid history
             setBidHistory([...bidHistory, { item: bidItem, amount: bidAmount }]);
-
-            // Reset form
             setBidItem('');
             setBidAmount('');
         }
@@ -58,18 +70,24 @@ const BiddingForm = () => {
                 <form onSubmit={handleBidSubmit}>
                     <label>
                         Item:
-                        <input
-                            type="text"
+                        <select
                             value={bidItem}
                             onChange={(e) => setBidItem(e.target.value)}
-                            placeholder="Enter item name"
                             required
-                        />
+                        >
+                            <option value="">Select an item</option>
+                            {artworks.map((artwork) => (
+                                <option key={artwork.id} value={artwork.title}>
+                                    {artwork.title}
+                                </option>
+                            ))}
+                        </select>
                     </label>
                     <label>
                         Bid Amount:
                         <input
-                            type="text"
+                            type="number"
+                            step="0.01"
                             value={bidAmount}
                             onChange={(e) => setBidAmount(e.target.value)}
                             placeholder="Enter bid amount"

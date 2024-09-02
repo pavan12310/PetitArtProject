@@ -7,8 +7,7 @@ const Home = () => {
         <div className="home-container">
             <header className="header">
                 <div className="logo">
-                    <img src="/images/logo2.jpg
-                    " alt="Art Marketplace Logo" className="logo-image" />
+                    <img src="/images/logo2.jpg" alt="Art Marketplace Logo" className="logo-image" />
                     <h1>Petit Art</h1>
                 </div>
                 <nav className="nav">
@@ -31,30 +30,30 @@ const Home = () => {
                     <h1 className="head">Welcome to the Petit Art</h1>
                 </div>
                 <div className="options-grid">
-                    <div className="option" id="gallery">
+                    <Link to="/gallery" className="option" id="gallery">
                         <h3>Gallery</h3>
                         <p>Explore amazing artworks from talented artists.</p>
-                    </div>
-                    <div className="option" id="bidding">
+                    </Link>
+                    <Link to="/bidding" className="option" id="bidding">
                         <h3>Bidding</h3>
                         <p>Participate in art auctions and bid on your favorite pieces.</p>
-                    </div>
-                    <div className="option" id="cart">
+                    </Link>
+                    <Link to="/cart" className="option" id="cart">
                         <h3>Cart</h3>
                         <p>View and manage your selected art pieces before purchase.</p>
-                    </div>
-                    <div className="option" id="profile">
+                    </Link>
+                    <Link to="/profile" className="option" id="profile">
                         <h3>Profile</h3>
                         <p>Manage your account and view your purchases.</p>
-                    </div>
-                    <div className="option" id="events">
+                    </Link>
+                    <Link to="/events" className="option" id="events">
                         <h3>Events</h3>
                         <p>Stay updated on upcoming art events and exhibitions.</p>
-                    </div>
-                    <div className="option" id="new-artist">
+                    </Link>
+                    <Link to="/new-artist" className="option" id="new-artist">
                         <h3>New Artist</h3>
                         <p>Register and upload your art to start selling.</p>
-                    </div>
+                    </Link>
                 </div>
             </main>
             <footer className="footer">
