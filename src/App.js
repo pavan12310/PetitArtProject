@@ -24,6 +24,7 @@ import React from 'react';
 
 import SignUp from './SignUp'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import GalleryPage from './GalleryPage';
 // Import other components as needed
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/gallery" element={<GalleryForm />} />
+                <Route path="/gallery" element={<GalleryPage />} />
                 {/* Add routes for other forms here */}
                 <Route path="/bidding" element={<BiddingForm />} />
                 <Route path="/events" element={<EventPage />} />

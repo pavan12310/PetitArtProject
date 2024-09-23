@@ -1,61 +1,98 @@
-import React, { useState } from 'react';
-import './GalleryForm.css';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import './GalleryForm.css'; // Add some styles for the form
+
+// Validation schema using Yup
+const schema = yup.object().shape({
+  name: yup.string().required('Gallery name is required'),
+  location: yup.string(),
+  description: yup.string(),
+  artwork_ids: yup.string().required('Artwork IDs are required'),
+  organiser_id: yup.number().required('Organiser ID is required').typeError('Organiser ID must be a number'),
+});
 
 const GalleryForm = () => {
-    const [images, setImages] = useState([
-        { src: 'images/art5.jpg', title: 'Art Piece 1', artist: 'Artist 1' },
-        { src: 'images/art11.jpg', title: 'Art Piece 2', artist: 'Artist 2' },
-        { src: 'images/art6.jpg', title: 'Art Piece 3', artist: 'Artist 3' },
-        { src: 'images/art1.jpg', title: 'Art Piece 4', artist: 'Artist 4' },
-        { src: 'images/art4.jpg', title: 'Art Piece 5', artist: 'Artist 5' },
-        { src: 'images/art7.jpg', title: 'Art Piece 6', artist: 'Artist 6' },
-        { src: 'images/art8.jpg', title: 'Art Piece 7', artist: 'Artist 7' },
-        { src: 'images/art9.jpg', title: 'Art Piece 8', artist: 'Artist 8' },
-        { src: 'images/art10.jpg', title: 'Art Piece 9', artist: 'Artist 9' },
-    ]);
-    const [cart, setCart] = useState([]);
-    const [details, setDetails] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    const addToCart = (image) => {
-        setCart([...cart, image]);
-    };
+  const onSubmit = (data) => {
+    console.log(data);
+    // Add your form submission logic here (e.g., send data to the backend)
+  };
 
-    const viewDetails = (image) => {
-        setDetails(image);
-    };
-
-    return (
-        <div className="gallery-form">
-            <header className="gallery-header">
-                <h2>Art Gallery</h2>
-            </header>
-            <section className="gallery-content">
-                {images.length > 0 ? (
-                    images.map((image, index) => (
-                        <div key={index} className="gallery-card">
-                            <img src={image.src} alt={image.title} />
-                            <div className="gallery-card-info">
-                                <h3>{image.title}</h3>
-                                <p>{image.artist}</p>
-                                <button onClick={() => addToCart(image)}>Add to Cart</button>
-                                <button onClick={() => viewDetails(image)}>Details</button>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p className="no-results">No artworks available</p>
-                )}
-            </section>
-            {details && (
-                <div className="details-popup">
-                    <h3>{details.title}</h3>
-                    <p>Artist: {details.artist}</p>
-                    <img src={details.src} alt={details.title} />
-                    <button onClick={() => setDetails(null)}>Close</button>
-                </div>
-            )}
+  return (
+    <div className="gallery-form-container">
+      <h2>Create Gallery</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Name */}
+        <div className="form-group">
+          <label htmlFor="name">Gallery Name</label>
+          <input
+            id="name"
+            type="text"
+            {...register('name')}
+            className={errors.name ? 'input-error' : ''}
+          />
+          {errors.name && <p className="error-message">{errors.name.message}</p>}
         </div>
-    );
+
+        {/* Location */}
+        <div className="form-group">
+          <label htmlFor="location">Location</label>
+          <input
+            id="location"
+            type="text"
+            {...register('location')}
+          />
+          {errors.location && <p className="error-message">{errors.location.message}</p>}
+        </div>
+
+        {/* Description */}
+        <div className="form-group">
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            {...register('description')}
+            className={errors.description ? 'input-error' : ''}
+          />
+          {errors.description && <p className="error-message">{errors.description.message}</p>}
+        </div>
+
+        {/* Artwork IDs */}
+        <div className="form-group">
+          <label htmlFor="artwork_ids">Artwork IDs (comma-separated)</label>
+          <input
+            id="artwork_ids"
+            type="text"
+            {...register('artwork_ids')}
+            className={errors.artwork_ids ? 'input-error' : ''}
+          />
+          {errors.artwork_ids && <p className="error-message">{errors.artwork_ids.message}</p>}
+        </div>
+
+        {/* Organiser ID */}
+        <div className="form-group">
+          <label htmlFor="organiser_id">Organiser ID</label>
+          <input
+            id="organiser_id"
+            type="number"
+            {...register('organiser_id')}
+            className={errors.organiser_id ? 'input-error' : ''}
+          />
+          {errors.organiser_id && <p className="error-message">{errors.organiser_id.message}</p>}
+        </div>
+
+        <button type="submit">Create Gallery</button>
+      </form>
+    </div>
+  );
 };
 
 export default GalleryForm;
