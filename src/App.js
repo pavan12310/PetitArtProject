@@ -19,6 +19,7 @@ import ProfileForm from './ProfileForm'
 import NewArtistForm from './NewArtistForm'
 import EventForm from './EventForm'
 import SignIn from './SignIn'
+import EventPage from './EventPage';
 import React from 'react';
 
 import SignUp from './SignUp'
@@ -33,7 +34,7 @@ const App = () => {
                 <Route path="/gallery" element={<GalleryForm />} />
                 {/* Add routes for other forms here */}
                 <Route path="/bidding" element={<BiddingForm />} />
-                <Route path="/events" element={<EventForm />} />
+                <Route path="/events" element={<EventPage />} />
                 <Route path="/cart" element={<CartForm />} />
                 <Route path="/profile" element={<ProfileForm />} />
                 <Route path="/new-artist" element={<NewArtistForm />} />
