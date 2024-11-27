@@ -1,15 +1,26 @@
 .new-artist-form {
-    background: #ffffff;
+    /* background: #ffffff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     max-width: 600px;
-    margin: 40px auto;
+    margin: 40px auto; */
+    padding: 200px;
+    width: 900px;
+    margin: 0 auto;
+    background: url('./images/art6.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f5f5f5;
+    align-items: center;
 }
 
 .new-artist-form h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: #f40303;
+    background-color: #ffffff;
+    border-radius: 10px 10px;
+    margin-left: 20%;
+    margin-right: 20%;
     font-size: 2em;
     font-weight: 600;
     text-align: center;

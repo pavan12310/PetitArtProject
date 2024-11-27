@@ -37,10 +37,11 @@
   
   .gallery-content {
     background-color: #f4f4f4;
+    align-items: center;
     padding: 20px;
     border-radius: 8px;
     width: 500px;
-    margin-left: 200px;
+    margin-left: 20%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
