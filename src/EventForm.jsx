@@ -38,6 +38,7 @@ const EventForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
+        <h2>Event Registration</h2>
         <label>Event Name</label>
         <input type="text" {...register('event_name')} />
         {errors.event_name && <p>{errors.event_name.message}</p>}
