@@ -26,7 +26,7 @@ const CartPage = () => {
 
   return (
     <div className="cart-page">
-      <h2>Your Cart</h2>
+      <h2>View Your Cart</h2>
       {isCheckout ? (
         <div className="checkout-section">
           {/* OrderForm for the user to fill out their details */}

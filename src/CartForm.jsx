@@ -23,7 +23,7 @@ const CartForm = () => {
     return (
         <div className="cart-form">
             <header className="cart-header">
-                <h2>Your Cart</h2>
+                <h2>Your Orders</h2>
             </header>
 
             <section className="cart-items">

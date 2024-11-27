@@ -1,15 +1,16 @@
 /* EventPage.css */
 
 .event-page-container {
-    padding: 20px;
+    padding: 20%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 50% auto;
   }
   
   .event-navigation {
     display: flex;
     justify-content: space-around;
     margin-bottom: 20px;
+    margin-top: 100%;
   }
   
   .event-navigation button {
@@ -32,7 +33,7 @@
   }
   
   .event-content {
-    background-color: #f4f4f4;
+    background-color: #e3cdcd;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
